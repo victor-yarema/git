@@ -2838,6 +2838,12 @@ class P4Sync(Command, P4UserMap):
             text = regexp.sub(r'$\1$', text)
             contents = [ text ]
 
+        p4_read_pipe(['print', '-q', '-o', '.p4.tmp', '%s@%s' % (file['depotFile'], file['change'])])
+        with open('.p4.tmp', 'rb') as content_file:
+            contents = content_file.read()
+
+        os.remove('.p4.tmp')
+
         if self.largeFileSystem:
             (git_mode, contents) = self.largeFileSystem.processContent(git_mode, relPath, contents)
 
