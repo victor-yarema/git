@@ -2961,6 +2961,8 @@ class P4Sync(Command, P4UserMap):
 
                 fileArgs.append(fileArg)
 
+            print("fileArgs is %s" % (fileArgs))
+
             p4CmdList(["-x", "-", "print"],
                       stdin=fileArgs,
                       cb=streamP4FilesCbSelf)
