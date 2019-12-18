@@ -2863,6 +2863,8 @@ class P4Sync(Command, P4UserMap):
     # handle another chunk of streaming data
     def streamP4FilesCb(self, marshalled):
 
+        print("streamP4FilesCb")
+
         # catch p4 errors and complain
         err = None
         if "code" in marshalled:
