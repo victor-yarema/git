@@ -2842,6 +2842,7 @@ class P4Sync(Command, P4UserMap):
         with open('.p4.tmp', 'rb') as content_file:
             contents = content_file.read()
 
+        os.chmod('.p4.tmp', stat.S_IWRITE)
         os.remove('.p4.tmp')
 
         if self.largeFileSystem:
